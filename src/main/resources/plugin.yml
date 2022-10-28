@@ -1,0 +1,42 @@
+name: Applepets
+version: '${version}'
+main: com.avetharun.applepets.Applepets
+api-version: 1.19
+authors: [ Avetharun ]
+description: A Paper plugin to add pets, which has backwards compatibility for the old pets plugin used by Applecraft
+
+permissions:
+  applepets.admin.givepet:
+    default: op
+    description: "Ability to give a pet to a player."
+  applepets.admin.addpet:
+    default: op
+    description: "Ability to create new pets"
+  applepets.giftpet:
+    default: true
+    description: "Ability to gift a pet to another player"
+  applepets.petgui:
+    default: true
+    description: "Ability to open the GUI to choose and spawn pets."
+commands:
+  givepet:
+    description: 'Gives a registry pet to a player'
+    usage: /givepet player <pet uuid>
+    permission: applepets.admin.givepet
+    permission-message: "You do not have permission to run this."
+  addpet:
+    description: 'Adds a pet to the registry, which can be used to modify the default state of the pet when /givepet is run.
+      Description of arguments: 
+        default: Adds a blank Entity to the default registry under the name <pet global name>. This is run if you do not put an argument in.
+        custom: Adds a custom Entity to the default registry. Using this requires a seperate plugin! Wrapper for this will be made eventually.
+    '
+    usage: '/addpet <pet global name> [deprecated: custom]'
+    permission: applepets.admin.addpet
+  giftpet:
+    description: "Gifts a pet from a player's own inventory to another player. Required to be holding a tag. Tags can be redeemed through the /pet command"
+    usage: '/giftpet player <pet name>'
+    permission: applepets.giftpet
+  pet:
+    aliases: ["petgui"]
+    description: "GUI utility for pets, which allows you to withdraw, gift, or spawn pets. Supports headless commands."
+    permission: applepets.petgui
