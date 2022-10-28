@@ -1,5 +1,4 @@
 # Applepets
-A plugin for pets and familiars built for the Applecraft server
+A plugin for pets and familiars built for the Applecraft server.
 
-Docs:
-  http://applepets.rtfd.io/
+[Docs and how to use](https://github.com/avetharun/applepets/tree/master/docs)
