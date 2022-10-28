@@ -1,0 +1,16 @@
+{
+  "display": {
+    "Name": "{\"extra\":[{\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"gray\",\"text\":\"<>< \"},{\"bold\":true,\"italic\":false,\"color\":\"dark_gray\",\"text\":\"CapsicumEagle\'s \"},{\"bold\":true,\"italic\":true,\"color\":\"red\",\"text\":\"Flying \"},{\"bold\":true,\"italic\":false,\"color\":\"red\",\"text\":\"S\"},{\"bold\":true,\"italic\":false,\"color\":\"light_purple\",\"text\":\"a\"},{\"bold\":true,\"italic\":false,\"color\":\"red\",\"text\":\"l\"},{\"bold\":true,\"italic\":false,\"color\":\"light_purple\",\"text\":\"m\"},{\"bold\":true,\"italic\":false,\"color\":\"red\",\"text\":\"o\"},{\"bold\":true,\"italic\":false,\"color\":\"light_purple\",\"text\":\"n \"},{\"bold\":true,\"italic\":false,\"color\":\"gray\",\"text\":\"><>\"}],\"text\":\"\"}",
+    "Lore": [
+      "{\"extra\":[{\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"red\",\"text\":\"Salmon pet token\"}],\"text\":\"\"}",
+      "{\"extra\":[{\"bold\":false,\"italic\":true,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"dark_red\",\"text\":\"Right click to use\"}],\"text\":\"\"}"
+    ]
+  },
+  "HideFlags": 1,
+  "Enchantments": [
+    {
+      "id": "minecraft:fire_protection",
+      "lvl": 1
+    }
+  ]
+}
