@@ -1,0 +1,26 @@
+{
+  "Enchantments": [
+    {
+      "id": "minecraft:infinity",
+      "lvl": 1
+    }
+  ],
+  "HideFlags": 1,
+  "display": {
+    "Lore": [
+      "{\"extra\":[{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"gray\",\"text\":\"Parrot Pet Token\"}],\"text\":\"\"}",
+      "{\"extra\":[{\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"dark_gray\",\"text\":\"- - - - - - - - - - - - - -\"}],\"text\":\"\"}",
+      "{\"extra\":[{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"white\",\"text\":\"\"}],\"text\":\"\"}",
+      "{\"extra\":[{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"white\",\"text\":\"\\\"Squaaaaaaaark the plank!\\\"\"}],\"text\":\"\"}",
+      "{\"extra\":[{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"white\",\"text\":\"\"}],\"text\":\"\"}",
+      "{\"extra\":[{\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"dark_gray\",\"text\":\"> \"},{\"bold\":false,\"italic\":false,\"color\":\"gold\",\"text\":\"Right-Click \"},{\"italic\":false,\"color\":\"white\",\"text\":\"this token to unlock\"}],\"text\":\"\"}",
+      "{\"extra\":[{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"gray\",\"text\":\"   your new Parrot pet!\"}],\"text\":\"\"}",
+      "{\"extra\":[{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"white\",\"text\":\"\"}],\"text\":\"\"}",
+      "{\"extra\":[{\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"dark_gray\",\"text\":\"> \"},{\"bold\":false,\"italic\":false,\"color\":\"gray\",\"text\":\"Do \"},{\"italic\":false,\"color\":\"gold\",\"text\":\"/pets \"},{\"italic\":false,\"text\":\"to access your pet!\"}],\"text\":\"\"}",
+      "{\"extra\":[{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"white\",\"text\":\"\"}],\"text\":\"\"}",
+      "{\"extra\":[{\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"dark_gray\",\"text\":\"- - - - - - - - - - - - - -\"}],\"text\":\"\"}",
+      "{\"extra\":[{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"dark_gray\",\"text\":\"►         \"},{\"italic\":false,\"color\":\"gold\",\"text\":\"P\"},{\"italic\":false,\"color\":\"yellow\",\"text\":\"I\"},{\"italic\":false,\"color\":\"red\",\"text\":\"R\"},{\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"A\"},{\"italic\":false,\"color\":\"yellow\",\"text\":\"T\"},{\"italic\":false,\"color\":\"gold\",\"text\":\"E \"},{\"italic\":false,\"color\":\"dark_gray\",\"text\":\"Crate Item       \"},{\"italic\":false,\"color\":\"dark_gray\",\"text\":\"◄\"}],\"text\":\"\"}"
+    ],
+    "Name": "{\"extra\":[{\"bold\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"dark_aqua\",\"text\":\"▬ \"},{\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"✖ \"},{\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"P\"},{\"italic\":false,\"color\":\"red\",\"text\":\"a\"},{\"italic\":false,\"color\":\"green\",\"text\":\"r\"},{\"italic\":false,\"color\":\"gold\",\"text\":\"r\"},{\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"o\"},{\"italic\":false,\"color\":\"red\",\"text\":\"t \"},{\"italic\":false,\"color\":\"green\",\"text\":\"P\"},{\"italic\":false,\"color\":\"gold\",\"text\":\"e\"},{\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"t \"},{\"italic\":false,\"color\":\"red\",\"text\":\"T\"},{\"italic\":false,\"color\":\"green\",\"text\":\"o\"},{\"italic\":false,\"color\":\"gold\",\"text\":\"k\"},{\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"e\"},{\"italic\":false,\"color\":\"red\",\"text\":\"n \"},{\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"✖ \"},{\"italic\":false,\"color\":\"dark_aqua\",\"text\":\"▬\"}],\"text\":\"\"}"
+  }
+}
