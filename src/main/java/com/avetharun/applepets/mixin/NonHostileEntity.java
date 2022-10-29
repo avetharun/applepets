@@ -2,6 +2,7 @@ package com.avetharun.applepets.mixin;
 
 import com.avetharun.applepets.Applepets;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.commands.KillCommand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -13,6 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.Vec3;
 import org.bukkit.Location;
@@ -42,17 +44,23 @@ public class NonHostileEntity extends PathfinderMob {
     }
 
     @Override
+    protected void playStepSound(@NotNull BlockPos pos, @NotNull BlockState state) {
+        super.playStepSound(pos, state);
+    }
+
+    @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FollowPlayerGoal(this, 1.0f, 2f, 5f));
-        this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class,8.0f));
+        this.goalSelector.addGoal(0, new FollowPlayerGoal(this, 1.0f, 2.25f, 10.2f));
+        this.goalSelector.addGoal(0, new LookAtPlayerGoal(this, Player.class,8.0f));
+        this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new FloatGoal(this));
     }
 
     @Override
     public @NotNull Iterable<ItemStack> getArmorSlots() {
         return new ArrayList<>();
     }
+
 
     @Override
     public @NotNull ItemStack getItemBySlot(@NotNull EquipmentSlot equipmentSlot) {
@@ -93,6 +101,11 @@ public class NonHostileEntity extends PathfinderMob {
     @Override
     public void kill() {
         super.kill();
+    }
+
+    @Override
+    public boolean isBaby() {
+        return super.isBaby();
     }
 
     @Override

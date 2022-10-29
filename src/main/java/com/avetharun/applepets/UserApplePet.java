@@ -22,7 +22,5 @@ public class UserApplePet {
     public void setVariant(int variant) {
         this.variant = variant;
     }
-
-    public UUID owner;
     public String RegistryUUID;
 }

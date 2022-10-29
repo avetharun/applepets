@@ -61,17 +61,22 @@ public class CommandPetGUI implements CommandExecutor {
         }
         pets.forEach((uuid, pet)->{
             Applepets.getInstance().getLogger().log(Level.INFO, String.format("Getting pet using UUID %s", uuid));
-            ApplePetRegistry r = ApplePetRegistry.GetOrDefault(uuid);
+            ApplePetRegistry r = ApplePetRegistry.GetOrDefault(pet.RegistryUUID);
+            if (r == null) {
+                Applepets.getInstance().getLogger().log(Level.WARNING, "Unable to find above pet. Using fallback.");
+                r = ApplePetRegistry.EmptyPetRegistry;
+            }
             ItemStack s = r._stack;
+            ApplePetRegistry finalR = r;
             s.editMeta(meta->{
-                String name = pet.getDisplay() == null? r.getDisplay() : pet.getDisplay();
+                String name = pet.getDisplay() == null? finalR.getDisplay() : pet.getDisplay();
                 meta.displayName(Component.text(name, TextColor.color(0xcfcfcf)));
-                meta.lore(new ArrayList<>(){{add(Component.text(r.getDescription()));}});
+                meta.lore(new ArrayList<>(){{add(Component.text(finalR.getDescription()));}});
                 PersistentDataContainer container = meta.getPersistentDataContainer();
-                container.set(new NamespacedKey(Applepets.getInstance(), "PET_SPAWN_UUID"), PersistentDataType.STRING, r.getUuid());
+                container.set(new NamespacedKey(Applepets.getInstance(), "PET_SPAWN_UUID"), PersistentDataType.STRING, finalR.getUuid() == null? "NOSPAWN": finalR.getUuid());
                 container.set(new NamespacedKey(Applepets.getInstance(), "PET_NAME"), PersistentDataType.STRING, name);
                 container.set(new NamespacedKey(Applepets.getInstance(), "GUI_ITEM"), PersistentDataType.STRING, "PET_SPAWNER");
-
+                container.set(new NamespacedKey(Applepets.getInstance(), "PLAYER_PET_UUID"), PersistentDataType.STRING, uuid);
             });
             ui.addItem(s);
         });
@@ -83,6 +88,9 @@ public class CommandPetGUI implements CommandExecutor {
                 Applepets.ReloadAssets();
                 sender.sendMessage("reloaded.");
                 return true;
+            }
+            if (sender.hasPermission(Applepets.Permissions.ADMIN_GIVEPET) && Arrays.asList(args).contains("save")) {
+                Applepets.ShutdownAndSaveAssets();
             }
         }
         if (sender instanceof Player player) {

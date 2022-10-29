@@ -25,12 +25,15 @@ public class CommandGivepet implements CommandExecutor {
     }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        sender.sendMessage(String.format("%s", label));
-        Arrays.stream(args).forEach(arg->{
-            sender.sendMessage(String.format("Argument: %s", arg));
-        });
+        if (args.length < 2) {
+            sender.sendMessage(String.format("Error trying to add pet to %s: Need 2 arguments, found %d", sender.getName(), args.length));
+            return true;
+        }
         if (sender.hasPermission(Applepets.Permissions.ADMIN_GIVEPET) && sender instanceof Player player) {
-            PlayerPetFile.GetPlayerPets(player.getUniqueId());
+            String out = PlayerPetFile.AddPetToPlayerOnline(Applepets.getInstance().getServer().getPlayerUniqueId(args[0]), args[1]);
+            if (!out.equals("EXISTS")) {
+                sender.sendMessage(String.format("Added pet with internal UUID %s to player %s using ID %s", args[1], args[0], out));
+            }
         }
         // Silently return.
         return true;

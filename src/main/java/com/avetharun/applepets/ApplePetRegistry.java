@@ -68,6 +68,11 @@ public class ApplePetRegistry {
     String ai;
     int variant;
     String textcolor;
+    int baby = 0;
+
+    public int getBaby() {
+        return baby;
+    }
 
     public String getTextcolor() {
         return textcolor;
@@ -93,6 +98,9 @@ public class ApplePetRegistry {
     public void setVariant(int v) {variant = v;}
     public void setItem(String item) {this.item = item;}
 
+    public void setBaby(int baby) {
+        this.baby = baby;
+    }
 
     @Override
     public String toString() {
@@ -104,10 +112,17 @@ public class ApplePetRegistry {
                 ",\n    item='" + item + '\'' +
                 ",\n    ai='" + ai + '\'' +
                 ",\n    variant=" + variant +
+                ",\n    baby=" + baby + '\n' +
             '}';
     }
     public static ApplePetRegistry EmptyPetRegistry = new ApplePetRegistry();
     ApplePetRegistry() {
+        this._stack = new ItemStack(Material.MUSIC_DISC_11);
+        this._stack.editMeta(itemMeta -> {
+            itemMeta.displayName(Component.text("Nothing here but crickets..", TextColor.color(0x8f1c4f)));
+            itemMeta.lore(new ArrayList<>(){{add(Component.text("chirp.. chirp.."));}});
+        });
+
     }
     public static ApplePetRegistry loadPetFile(File f) {
         EnsureEmptyExists();
@@ -136,7 +151,7 @@ public class ApplePetRegistry {
         }
         return EmptyPetRegistry;
     }
-    public NonHostileEntity summon(String entityName, World world, Location playerLocation, Player owner) {
+    public NonHostileEntity summon(String entityName, World world, Location playerLocation, Player owner, boolean baby) {
         Random r = new Random();
         playerLocation.add(r.nextFloat(-1, 1), 0, r.nextFloat(-1, 1));
 
@@ -146,7 +161,7 @@ public class ApplePetRegistry {
                 Registry.ENTITY_TYPE.get(
                         ResourceLocation.read(this.getType()).getOrThrow(false, error->{}));
             NonHostileEntity e = new NonHostileEntity((net.minecraft.world.entity.EntityType<? extends PathfinderMob>) ty, ((CraftWorld) world).getHandle(), playerLocation, owner);
-
+        e.setBaby(baby);
         e.setCustomName(net.minecraft.network.chat.Component.literal(entityName).withStyle(ChatFormatting.RESET, ChatFormatting.GRAY));
         return e;
     }

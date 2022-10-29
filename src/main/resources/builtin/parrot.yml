@@ -1,0 +1,6 @@
+type: "minecraft:parrot"
+ai: "FLOAT"
+uuid: "parrot"
+display: "Parrot"
+description: "A parrot pet!"
+item: "MAROON"

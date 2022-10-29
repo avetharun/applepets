@@ -9,12 +9,53 @@ import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.time.Instant;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.UUID;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.logging.Level;
-
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.nio.charset.StandardCharsets;
+import java.math.BigInteger;
 public class alib {
+    public static String md5(String base) {
+
+        try{
+            MessageDigest digest = MessageDigest.getInstance("MD5");
+            byte[] hash = digest.digest(base.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch(Exception ex){
+            throw new RuntimeException(ex);
+        }
+    }
+    public static String sha256(String base) {
+        try{
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(base.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch(Exception ex){
+            throw new RuntimeException(ex);
+        }
+    }
+    public static String HashPlayerPet(String playerUUID, String petUUID) {
+        String t = String.valueOf(Instant.now().toEpochMilli());
+        return md5(t + playerUUID + petUUID).substring(0,6);
+    }
     public static final HashMap<String, ItemStack> EGG_COLORS = new HashMap<>(){{
         put("WHITE", new ItemStack(Material.GHAST_SPAWN_EGG)); // ghast
         put("GRAY", new ItemStack(Material.ELDER_GUARDIAN_SPAWN_EGG)); // eld. guardian
