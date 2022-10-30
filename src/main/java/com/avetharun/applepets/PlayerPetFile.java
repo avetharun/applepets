@@ -33,7 +33,7 @@ public class PlayerPetFile {
         if (f.pets.containsKey(petUUID)) {return "EXISTS";}
         UserApplePet p = new UserApplePet();
         p.RegistryUUID = petUUID;
-        p.setDisplay(ApplePetRegistry.GetOrDefault(petUUID).getDisplay());
+        p.display = (ApplePetRegistry.GetOrDefault(petUUID).getDisplay());
         String s = alib.HashPlayerPet(player.toString(), petUUID);
         f.pets.put(s, p);
         return s;

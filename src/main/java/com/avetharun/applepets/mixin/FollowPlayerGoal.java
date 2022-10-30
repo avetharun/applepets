@@ -89,14 +89,22 @@ public class FollowPlayerGoal extends Goal {
     public void tick() {
         if (--this.timeToRecalcPath <= 0) {
             this.mob.playAmbientSound();
+            double _speed = speedModifier * 1.25f;
+            EntityType t = this.mob.getType();
+            if (t == EntityType.AXOLOTL || t == EntityType.TADPOLE || t == EntityType.DOLPHIN) {
+                _speed = 0.6f;
+            }
             this.mob.getLookControl().setLookAt(this.owner, 10.0F, (float)this.mob.getMaxHeadXRot());
             this.timeToRecalcPath = this.adjustedTickDelay(10);
             double d = this.mob.getX() - this.owner.getX();
             double e = this.mob.getY() - this.owner.getY();
             double f = this.mob.getZ() - this.owner.getZ();
             double g = d * d + f * f;
+            if (g + (e*e) >= 128 /*64^2*/ || this.mob.touchingUnloadedChunk()) {
+                this.mob.teleportTo(owner.getX(), owner.getY(), owner.getZ());
+            }
             if (!(g <= (double)(this.stopDistance * this.stopDistance))) {
-                this.navigation.moveTo(this.owner, this.speedModifier);
+                this.navigation.moveTo(this.owner, _speed);
                 if (this.mob.getType() == EntityType.RABBIT || this.mob.getType() == EntityType.SLIME || this.mob.getType() == EntityType.MAGMA_CUBE){
                     // jumping status
                     this.mob.getJumpControl().jump();

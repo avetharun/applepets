@@ -69,7 +69,7 @@ public class CommandPetGUI implements CommandExecutor {
             ItemStack s = r._stack;
             ApplePetRegistry finalR = r;
             s.editMeta(meta->{
-                String name = pet.getDisplay() == null? finalR.getDisplay() : pet.getDisplay();
+                String name = pet.display == null || pet.display.isEmpty() ? finalR.getDisplay() : pet.display;
                 meta.displayName(Component.text(name, TextColor.color(0xcfcfcf)));
                 meta.lore(new ArrayList<>(){{add(Component.text(finalR.getDescription()));}});
                 PersistentDataContainer container = meta.getPersistentDataContainer();

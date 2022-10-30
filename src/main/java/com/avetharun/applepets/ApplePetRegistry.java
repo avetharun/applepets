@@ -7,14 +7,19 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.animal.Fox;
 import net.minecraft.world.entity.player.Player;
 import org.bukkit.*;
 import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_19_R1.entity.CraftAgeable;
+import org.bukkit.craftbukkit.v1_19_R1.entity.CraftCreature;
+import org.bukkit.craftbukkit.v1_19_R1.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_19_R1.util.CraftChatMessage;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -117,13 +122,14 @@ public class ApplePetRegistry {
     }
     public static ApplePetRegistry EmptyPetRegistry = new ApplePetRegistry();
     ApplePetRegistry() {
-        this._stack = new ItemStack(Material.MUSIC_DISC_11);
+        this._stack = new ItemStack(Material.MUSIC_DISC_CHIRP);
         this._stack.editMeta(itemMeta -> {
             itemMeta.displayName(Component.text("Nothing here but crickets..", TextColor.color(0x8f1c4f)));
-            itemMeta.lore(new ArrayList<>(){{add(Component.text("chirp.. chirp.."));}});
+            itemMeta.lore(new ArrayList<>(){{add(Component.text("chirp.. chirp.."));add(Component.text("get it? I'll see myself out."));}});
         });
 
     }
+
     public static ApplePetRegistry loadPetFile(File f) {
         EnsureEmptyExists();
         Yaml Y = new Yaml(new CustomClassLoaderConstructor(ApplePetRegistry.class.getClassLoader()));
@@ -151,17 +157,16 @@ public class ApplePetRegistry {
         }
         return EmptyPetRegistry;
     }
-    public NonHostileEntity summon(String entityName, World world, Location playerLocation, Player owner, boolean baby) {
+    public NonHostileEntity summon(ApplePetRegistry registry, String entityName, World world, Location playerLocation, Player owner) {
         Random r = new Random();
         playerLocation.add(r.nextFloat(-1, 1), 0, r.nextFloat(-1, 1));
 
         NamespacedKey key = NamespacedKey.fromString(this.getType());
         assert key != null;
-        net.minecraft.world.entity.EntityType<?> ty =
+        net.minecraft.world.entity.EntityType ty =
                 Registry.ENTITY_TYPE.get(
                         ResourceLocation.read(this.getType()).getOrThrow(false, error->{}));
-            NonHostileEntity e = new NonHostileEntity((net.minecraft.world.entity.EntityType<? extends PathfinderMob>) ty, ((CraftWorld) world).getHandle(), playerLocation, owner);
-        e.setBaby(baby);
+            NonHostileEntity e = new NonHostileEntity(ty, ((CraftWorld) world).getHandle(), playerLocation, owner, registry);
         e.setCustomName(net.minecraft.network.chat.Component.literal(entityName).withStyle(ChatFormatting.RESET, ChatFormatting.GRAY));
         return e;
     }

@@ -3,6 +3,7 @@ package com.avetharun.applepets;
 import com.avetharun.applepets.commands.CommandAddpet;
 import com.avetharun.applepets.commands.CommandGivepet;
 import com.avetharun.applepets.commands.CommandPetGUI;
+import com.avetharun.applepets.mixin.NonHostileEntity;
 import net.kyori.adventure.text.Component;
 import net.minecraft.world.entity.LivingEntity;
 import org.bukkit.Bukkit;
@@ -151,8 +152,9 @@ public final class Applepets extends JavaPlugin implements Listener {
                         return;
                     }
                     ApplePetRegistry r = ApplePetRegistry.registry.get(uuid);
-                    r.summon(name, event.getWhoClicked().getWorld(), event.getWhoClicked().getLocation(),
-                            ((CraftPlayer)event.getWhoClicked()).getHandle(), r.getBaby() == 1);
+                    NonHostileEntity e = r.summon(r, name, event.getWhoClicked().getWorld(), event.getWhoClicked().getLocation(),
+                            ((CraftPlayer)event.getWhoClicked()).getHandle());
+
                 }
 
                 default -> {}
