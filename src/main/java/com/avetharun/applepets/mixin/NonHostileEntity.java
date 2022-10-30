@@ -53,7 +53,7 @@ import java.util.List;
 
 import static org.bukkit.craftbukkit.v1_19_R1.event.CraftEventFactory.callCreatureSpawnEvent;
 
-public class NonHostileEntity extends AgeableMob {
+public class NonHostileEntity extends PathfinderMob {
     Player owner;
     ApplePetRegistry registry;
     public NonHostileEntity(EntityType<? extends AgeableMob> type, Level world, Location loc, Player owner, ApplePetRegistry r) {
@@ -66,6 +66,9 @@ public class NonHostileEntity extends AgeableMob {
         if (e instanceof AgeableMob a) {
             a.setBaby(r.getBaby() >= 1);
             a.ageLocked = true;
+            if (e.getType() == EntityType.FOX) {
+                Fox f = ((Fox) this).setFoxType(Fox.Type.SNOW);
+            }
         }
 
 
@@ -120,11 +123,6 @@ public class NonHostileEntity extends AgeableMob {
         return super.finalizeSpawn(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
-    @Nullable
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        return null;
-    }
     boolean isFirstTick = true;
 
     @Override
