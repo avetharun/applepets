@@ -88,11 +88,15 @@ public class FollowPlayerGoal extends Goal {
     @Override
     public void tick() {
         if (--this.timeToRecalcPath <= 0) {
-            this.mob.playAmbientSound();
-            double _speed = speedModifier * 1.25f;
+            double _speed = speedModifier;
             EntityType t = this.mob.getType();
             if (t == EntityType.AXOLOTL || t == EntityType.TADPOLE || t == EntityType.DOLPHIN) {
-                _speed = 0.6f;
+                _speed *= 0.32f;
+            } else if (t == EntityType.PANDA || t == EntityType.ALLAY || t == EntityType.STRIDER) {
+                _speed *= 2f;
+            }
+            if (owner.isSprinting()) {
+                _speed *= 1.2f;
             }
             this.mob.getLookControl().setLookAt(this.owner, 10.0F, (float)this.mob.getMaxHeadXRot());
             this.timeToRecalcPath = this.adjustedTickDelay(10);

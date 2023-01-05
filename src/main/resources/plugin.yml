@@ -4,17 +4,25 @@ main: com.avetharun.applepets.Applepets
 api-version: 1.19
 authors: [ Avetharun ]
 description: A Paper plugin to add pets, which has backwards compatibility for the old pets plugin used by Applecraft
+load: STARTUP
+
 
 permissions:
   applepets.admin.givepet:
     default: op
-    description: "Ability to give a pet to a player."
+    description: "Admin: Ability to give a pet to a player."
   applepets.admin.addpet:
     default: op
-    description: "Ability to create new pets"
+    description: "Admin: Ability to create new pets"
   applepets.giftpet:
     default: true
     description: "Ability to gift a pet to another player"
+  applepets.withdrawpet:
+    default: false
+    description: "Ability to withdraw a pet and turn it into a token"
+  applepets.editpet:
+    default: false
+    description: "Ability to edit some values associated with a user's pet"
   applepets.petgui:
     default: true
     description: "Ability to open the GUI to choose and spawn pets."

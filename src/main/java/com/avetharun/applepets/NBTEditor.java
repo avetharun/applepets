@@ -13,6 +13,7 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.minecraft.nbt.CompoundTag;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -353,13 +354,13 @@ public final class NBTEditor {
         }
     }
 
-    private static Class< ? > getNBTTag( Class< ? > primitiveType ) {
+    public static Class< ? > getNBTTag( Class< ? > primitiveType ) {
         if ( NBTClasses.containsKey( primitiveType ) )
             return NBTClasses.get( primitiveType );
         return primitiveType;
     }
 
-    private static Object getNBTVar( Object object ) {
+    public static Object getNBTVar( Object object ) {
         if ( object == null ) {
             return null;
         }
@@ -374,15 +375,15 @@ public final class NBTEditor {
         return null;
     }
 
-    private static Method getMethod( String name ) {
+    public static Method getMethod( String name ) {
         return methodCache.containsKey( name ) ? methodCache.get( name ) : null;
     }
 
-    private static Constructor< ? > getConstructor( Class< ? > clazz ) {
+    public static Constructor< ? > getConstructor( Class< ? > clazz ) {
         return constructorCache.containsKey( clazz ) ? constructorCache.get( clazz ) : null;
     }
 
-    private static Class<?> getNMSClass(String name) {
+    public static Class<?> getNMSClass(String name) {
         if ( classCache.containsKey( name ) ) {
             return classCache.get( name );
         }
@@ -395,7 +396,7 @@ public final class NBTEditor {
         }
     }
 
-    private static String getMatch( String string, String regex ) {
+    public static String getMatch( String string, String regex ) {
         Pattern pattern = Pattern.compile( regex );
         Matcher matcher = pattern.matcher( string );
         if ( matcher.find() ) {
@@ -1508,6 +1509,7 @@ public final class NBTEditor {
                 return null;
             }
         }
+
 
         @Override
         public String toString() {
